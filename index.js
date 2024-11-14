@@ -26,9 +26,12 @@ puppeteer.launch({ headless: true }).then(async browser => {
       puppeteer.launch({ headless: false }).then(async browser => {
         const page = await browser.newPage()
         await page.setViewport({width: 1080, height: 1024})
-        await page.goto('https://www.youtube.com/watch?v=T5NUv-XSCyI&t=104s')
+        await page.goto('https://listenonrepeat.com/?v=T5NUv-XSCyI')
         await page.waitForSelector('#dialog')
         await page.locator('[aria-label="Reject the use of cookies and other data for the purposes described"]').click()
+        while (true) {
+          await sleep(1000 * 60 * 30)
+        }
       })
     }
     await sleep(1000 * 60 * 30)
